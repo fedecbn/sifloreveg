@@ -1,0 +1,145 @@
+parameters:
+    observations_grid:
+        id_flore_fcbn:
+            maille_display: true
+            commune_display: true
+            header_classes: hidden
+            body_classes: key hidden
+        id_flore_mere:
+            label: ID flore mère
+        cd_ref:
+            field_name: tax.cd_ref
+            label: Code TaxRef
+            maille_display: true
+            commune_display: true
+        nom_complet:
+            field_name: obs.nom_complet
+            label: Nom TaxRef V5
+            maille_display: true
+            commune_display: true
+        insee_comm:
+            label: Code Insee
+            commune_display: true
+        cd_sig:
+            label: Code Maille
+            maille_display: true
+        libelle_type_localisation:
+            label: Type localisation
+        libelle_type_rattachement:
+            label: Type rattachement
+        date_debut_obs:
+            label: Date début obs
+            maille_display: true
+            commune_display: true
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_debut_obs:
+            field_name: to_char(date_debut_obs,'YYYY')
+            label: Date début obs
+            maille_display: true
+            commune_display: true
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        date_fin_obs:
+            label: Date fin obs
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_fin_obs:
+            field_name: to_char(date_fin_obs,'YYYY')
+            label: Date fin obs
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        libelle_nature_date:
+            label: Nature date
+            maille_display: true
+            commune_display: true
+        libelle_type_source:
+            label: Type source
+            maille_display: true
+            commune_display: true
+        remarque_date:
+            label: Remarque date
+        nom_taxon_mere:
+            label: Nom taxon bd mère
+        code_taxon_mere:
+            label: Code taxon bd mère
+        referentiel_mere:
+            label: Referentiel bd mère
+        nom_taxon_originel:
+            label: Nom taxon originel
+            maille_display: true
+            commune_display: true
+        remarque_taxon:
+            label: Remarque taxon
+        date_transmission:
+            label: Date transmission
+        libelle_statut_pop:
+            label: Statut population
+        libelle_court_bd_mere:
+            label: BD mère
+            maille_display: true
+            commune_display: true
+        libelle_usage_donnee:
+            label: Usage donnée
+        libelle_court_bd_source:
+            label: BD source
+            maille_display: true
+            commune_display: true
+        observateur:
+            label: Observateur(s)
+            maille_display: true
+            commune_display: true
+        #organisme_observateur
+        libelle_organisme:
+            label: Organisme(s)
+            maille_display: true
+            commune_display: true
+        id_flore_source:
+            label: ID flore source
+        remarque_donnee_mere:
+            label: Remarque donnee mère
+        remarque_lieu:
+            label: Remarque lieu
+            roles: [IS_AUTHENTICATED_FULLY]
+        type_doc:
+            field_name: type_doc
+            label: Type doc
+        cote_biblio_cbn:
+            label: Cote biblio cbn
+        titre_doc:
+            label: Titre doc
+            maille_display: true
+            commune_display: true
+        annee_doc:
+            label: Année doc
+            maille_display: true
+        auteur_doc:
+            label: Auteur doc
+            maille_display: true
+            commune_display: true
+        ref_doc:
+            label: Ref doc
+            maille_display: true
+            commune_display: true
+        code_herbarium:
+            label: Code herbarium
+        code_index_herbariorum:
+            label: Code index herbariorum
+            maille_display: true
+            commune_display: true
+        nom_herbarium:
+            label: Nom herbarium
+            maille_display: true
+            commune_display: true
+        code_herbier:
+            label: Code herbier
+        nom_herbier:
+            label: Nom herbier
+            maille_display: true
+            commune_display: true
+        part_herbier:
+            label: Part herbier
+            maille_display: true
+            commune_display: true
+        id_part:
+            label: ID part
+        cote_biblio_bd_mere:
+            field_name: cote_biblio_bd_mere
+            label: Cote biblio bd mère
+

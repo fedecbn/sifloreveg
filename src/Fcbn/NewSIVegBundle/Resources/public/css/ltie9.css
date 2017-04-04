@@ -1,0 +1,14 @@
+/* Left country toggler - No SVG support */
+#RegionSelectionList .toggle_metro {
+    background-image: url(/bundles/fcbnnewsiflore/img/metro.png);
+}
+#RegionSelectionList .toggle_reun {
+    background-image: url(/bundles/fcbnnewsiflore/img/reun.png);
+}
+#RegionSelectionList .active .toggle_metro {
+    background-image: url(/bundles/fcbnnewsiflore/img/metro_active.png);
+}
+#RegionSelectionList .active .toggle_reun {
+    background-image: url(/bundles/fcbnnewsiflore/img/reun_active.png);
+}
+

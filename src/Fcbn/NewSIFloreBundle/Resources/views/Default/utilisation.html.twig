@@ -1,0 +1,100 @@
+<h2>NOTICE SCIENTIFIQUE</h2>
+Voir la <a target="_blank" href="{{ asset('bundles/fcbnnewsiflore/doc_scient.pdf') }}">notice scientifique</a>
+<h2>NOTICE D'UTILISATION <small>voir en <a target="_blank" href="{{ asset('bundles/fcbnnewsiflore/doc_user.pdf') }}">version PDF</a></small></h2>
+<ol class="mainol">
+<li><h3>Présentation générale</h3>
+    <p>La plateforme contient une fenêtre centrale et 3 fenêtres annexes (en position gauche, droite et inférieure).</p>
+    <p>L’utilisateur peut choisir entre une visualisation de la carte métropole ou bien celle de l’île de La Réunion.</p>
+</li>
+<li><h3>Fenêtre de gauche</h3>
+    <ol>
+        <li><h4>Encadré <em>« Sélection du taxon et options de synthèse »</em></h4>
+        <ol>
+            <li><h5><b>Menu permettant de choisir le taxon</b></h5>
+                <p>Il s’agit ici de sélectionner le taxon recherché à partir de 3 entrées possibles (les 2 premières entrées étant facultatives) :</p>
+                <ul>
+                    <li>« Groupe de taxons » : permet de filtrer les taxons selon 2 groupes : Trachéophytes ou Bryophytes.</li>
+                    <li>« Rang du taxon » : permet de filtrer les taxons selon le rang taxonomique (selon Taxref) souhaité: genre ou espèce.</li>
+                    <li>« Taxon » : permet de choisir le taxon, uniquement à partir des noms valides de TaxRef V5, soit à partir d’un triplet de lettre ou en chargeant la liste déroulante TaxRef (opération plus longue).</li>
+                </ul>
+            </li>
+            <li><h5><b>Cases à cocher pour choisir la synthèse à afficher:</b></h5>
+                <p>Deux options de synthèse sont sélectionnables:</p>
+                <ul>
+                    <li>« Synthèse maille 10km métropole et Réunion »</li>
+                    <li>« Synthèse communale métropole et Réunion »</li>
+                </ul>
+                <div class="alert alert-warning">ATTENTION : Pour les taxons communs et donc présents sur la majorité de la métropole, l’affichage du bilan communal est bloqué.</div>
+            </li>
+            <li><h5><b>Bouton « Envoyer »</b></h5>
+                <p>Ce bouton permet de faire afficher la synthèse cartographique (exprimée dans la fenêtre centrale) et les informations associées dans la fenêtre inférieure, à partir de la sélection effectuée précédemment.</p>
+                <p>A chaque modification (de taxon ou d’option), l’affichage doit être relancé en cliquant sur le bouton « Envoyer ».</p>
+            </li>
+        </ol>
+        </li>
+    </ol>
+</li>
+<li><h3>Fenêtre centrale</h3>
+    <ol>
+        <li><h4>Onglet <em>« Carte »</em></h4>
+            <p>La fenêtre permet d’afficher la carte de la métropole ou celle de La Réunion, avec la possibilité de zoomer et de se déplacer.</p>
+            <p>Lorsqu’une synthèse est affichée, il est possible de cliquer sur une maille ou sur une commune, ce qui a deux répercussions :</p>
+            <ul>
+                <li>la sélection, dans la fenêtre inférieure, de la ligne correspondant à la maille/commune et des informations associées.</li>
+                <li>l’affichage d’une fenêtre « popup » présentant un résumé des informations, et 3 boutons :
+                    <ul>
+                        <li>« Voir les observations » qui permet d’afficher le détail des observations associées à la maille/commune. Un onglet « Liste des observations » est alors créé contenant la liste complète des observations (cf. &sect;3.2).</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><h4>Onglet <em>« Liste des observations »</em></h4>
+            <div class="alert alert-warning">Cet onglet ne s’affiche que lorsque une maille/commune a été sélectionnée et que le bouton « Voir les observations » a été choisi.</div>
+            <p>Le tableau ainsi généré, contient l’ensemble des champs présents dans le format standard de données de la FCBN. Il est possible de trier par n’importe quelle colonne, en cliquant sur la colonne de son choix.</p>
+        </li>
+    </ol>
+<li><h3>Fenêtre de droite</h3>
+    <ol>
+        <li><h4>Encadré <em>« Sélection du rendu »</em></h4>
+            <ol>
+                <li><h5><b>Choix du rendu de la synthèse cartographique:</b></h5>
+                    <p>Quatre critères, au choix et non combinables, peuvent être sélectionnés pour déterminer le rendu de synthèse cartographique souhaité.</p>
+                    <ul>
+                        <li>« Localisation avérée/interprétée » : la synthèse cartographique distinguera les localisations avérées des localisations interprétées (cf. <a target="_blank" href="{{ asset('bundles/fcbnnewsiflore/doc_scient.pdf') }}">notice scientifique</a>).</li>
+                        <li>« Nombre d’observations » : la synthèse cartographique traduit le nombre d’observations effectuées par maille/commune en distinguant 3 classes.</li>
+                        <li>« Date d’observation » : la synthèse cartographique prend en compte l’ancienneté des observations et propose un rendu à partir de 3 classes de dates d’observations : récentes (&ge;2000), anciennes (comprises entre 1950 et 2000) ou historiques (&lt;1950). Pour chaque maille/commune, la valeur maximale du champ date_fin_obs des observations (c’est-à-dire la date de fin d’observation la plus récente) est utilisée.</li>
+                    </ul>
+                </li>
+                <li><h5><b>Bouton « Modifier le rendu »</b></h5>
+                    <p>Ce bouton permet de valider le nouveau choix du rendu effectué.</p>
+                </li>
+            </ol>
+        </li>
+        <li><h4>Encadré <em>« Couches de la carte »</em></h4>
+            <p>Cet encadré permet de masquer/afficher un certain nombre de couches sur la carte.</p>
+            <ul>
+                <li>« Fonds de carte » : permet de choisir la couche qui s’affichera en fond de carte. NB : un seul élément est sélectionnable.</li>
+                <li>« INPN » : toutes les couches issues des flux WMS de l’Inventaire national du patrimoine naturel (INPN) sont sélectionnables.</li>
+                <li>« Limites administratives et CBN » : contours des départements et/ou contours des territoires d’agréments des CBN.</li>
+                <li>« Cours d’eau » : permet un affichage des cours d’eau de la métropole (séparé en 6 niveaux complémentaires, en fonction de la longueur du cours d’eau), flux fourni par le SANDRE</li>
+            </ul>
+        </li>
+        <li><h4>Encadré <em>« Légende »</em></h4>
+            <p>Cet encadré permet de visualiser la légende pour la synthèse cartographique en cours ou la légende des fonds de cartes sélectionnés.</p>
+        </li>
+    </ol>
+</li>
+<li><h3>Fenêtre inférieure</h3>
+    <ol>
+        <li><h4>Onglet <em>« Synthèse par maille/commune »</em></h4>
+            <p>Cet onglet contient la liste des mailles/communes de métropole pour lesquelles le taxon est présent, ainsi qu’un certain nombre d’informations relatives à la synthèse.</p>
+            <p>Les éléments du tableau sont liés à la carte et le fait de cliquer sur une ligne sélectionne la maille/commune sur la carte, et affiche la fenêtre « popup » décrite au &sect;3.1.</p>
+            <p>Par défaut ce tableau est trié par la colonne « Nombre d’observations » mais il est possible de trier par n’importe quelle colonne, en cliquant sur la colonne de son choix. Il est aussi possible de masquer/afficher des colonnes.</p>
+        </li>
+        <li><h4>Onglet <em>« Synthèse par taxon »</em></h4>
+            <p>Cet onglet offre une synthèse générale par taxon. Il affiche une synthèse pour le taxon choisi et chaque taxon inférieur.</p>
+        </li>
+    </ol>
+</li>
+</ol>
+

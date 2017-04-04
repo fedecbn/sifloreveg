@@ -1,0 +1,176 @@
+html,body{
+    height:100%;
+}
+.LeftSelectInput {
+    width: 100%;
+}
+
+/* Left country toggler */
+#RegionSelectionList li a {
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px;
+}
+#RegionSelectionList .toggle_metro {
+    background-image: url(/bundles/fcbnnewsiflore/img/metro.svg);
+}
+#RegionSelectionList .toggle_reun {
+    background-image: url(/bundles/fcbnnewsiflore/img/reun.svg);
+}
+#RegionSelectionList .active .toggle_metro {
+    background-image: url(/bundles/fcbnnewsiflore/img/metro_active.svg);
+}
+#RegionSelectionList .active .toggle_reun {
+    background-image: url(/bundles/fcbnnewsiflore/img/reun_active.svg);
+}
+
+#middle-block .panel {
+    border-top: none;
+}
+#map{
+    height:600px;
+    width: 100%;
+}
+#legend{
+    max-height:260px;
+    overflow:auto;
+}
+#legendFondsCarte{
+     width:50%;
+}
+.renduLegendSquare{
+    width:18px;
+    height:10px;
+    border:2px solid;
+    float:left;
+    margin:5px 5px 0 7px;
+    border-radius:2px;
+}
+#readcomments{
+    overflow:auto;
+}
+#Observations{
+    overflow:auto;
+    max-height:675px;
+}
+#txtareaCommentaire { 
+    resize:vertical;
+    min-height:50px;
+    max-height:200px;
+}
+#submitNewComment{
+    margin:25px 0 0 0 ;
+}
+#RegionSelectionList{
+    margin-bottom:10px;
+}
+#bottomTabs{
+/*    height:200px; */
+    overflow:auto;
+}
+/****LoadingModal****/
+#LoadingModal {
+    display:    none;
+    position:   fixed;
+    z-index:    10000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../../img/loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+#photo .panel-body{
+    max-height:320px;
+    overflow:auto;
+    
+}
+#photo .panel-body img{
+    margin:0 0 10px 0;
+    max-width:100%;   
+}
+body.loading {
+    overflow: hidden;   
+}
+body.loading #LoadingModal {
+    display: block;
+}
+/****DataTables****/
+.sorting { background: url('http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_both.png') no-repeat center right; }
+.sorting_asc { background: url('http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_asc.png') no-repeat center right; }
+.sorting_desc { background: url('http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/images/sort_desc.png') no-repeat center right; }
+
+/*****OpenlayersMapStyles*****/
+.mapScale{
+    left:2px;
+    bottom:4.5em !important;
+}
+/*
+ * Pagination
+ */
+.dataTables_paginate {
+	float: right;
+	text-align: right;
+}
+
+/* Two button pagination - previous / next */
+#synthesePageControls{
+    float:right;
+}
+.paginate_disabled_previous,
+.paginate_enabled_previous,
+.paginate_disabled_next,
+.paginate_enabled_next {
+	height: 19px;
+	float: left;
+	cursor: pointer;
+	*cursor: hand;
+	color: #111 !important;
+}
+.paginate_disabled_previous:hover,
+.paginate_enabled_previous:hover,
+.paginate_disabled_next:hover,
+.paginate_enabled_next:hover {
+	text-decoration: none !important;
+}
+.paginate_disabled_previous:active,
+.paginate_enabled_previous:active,
+.paginate_disabled_next:active,
+.paginate_enabled_next:active {
+	outline: none;
+}
+
+.paginate_disabled_previous,
+.paginate_disabled_next {
+	color: #666 !important;
+}
+.paginate_disabled_previous,
+.paginate_enabled_previous {
+	padding-left: 23px;
+}
+.paginate_disabled_next,
+.paginate_enabled_next {
+	padding-right: 23px;
+	margin-left: 10px;
+}
+
+
+#map .olControlAttribution {
+    bottom: 3px;
+    font-size: .6em;
+    margin-left: 150px;
+}
+
+/* Grids */
+
+#SyntheseGrid1 th,
+#SyntheseGrid1 td,
+#SyntheseGrid2 th,
+#SyntheseGrid2 td,
+#ObservationsTable td,
+#ObservationsTable th {
+    white-space: nowrap;
+}
+

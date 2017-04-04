@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ 'Dashboard'}}{% endblock%}
+{% block stylesheets %}{{ parent() }}
+{% stylesheets 'bundles/fcbndashboard/css/*' %}
+    <link href="{{ asset_url }}" rel="stylesheet" />
+{% endstylesheets %}
+{% endblock %}
+{% block body %}
+    {% for message in app.session.flashbag.get('fos_user_success') %}
+        <div class="alert alert-success">
+            {{ message|trans({}, "FOSUserBundle") }}
+        </div>
+    {% endfor %}
+    <div id="left-menu">
+	{{ knp_menu_render('FcbnDashboardBundle:Builder:mainMenu') }}
+	</div>
+{% endblock %}

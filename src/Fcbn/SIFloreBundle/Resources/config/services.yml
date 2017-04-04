@@ -1,0 +1,6 @@
+parameters:
+    siflorebundle.query.class: Fcbn\SIFloreBundle\Services\QueryService
+services:
+    si_flore.query:
+        class: "%siflorebundle.query.class%"
+        arguments: [@doctrine.dbal.siflore_connection]

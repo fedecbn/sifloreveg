@@ -1,0 +1,155 @@
+
+parameters:
+    information_taxa_grid:
+        cd_ref:
+            field_name: syn.cd_ref
+            label: Code TaxRef
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        nom_complet:
+            field_name: syn.nom_sci
+            label: Nom du taxon
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        national:
+            field_name: syn.national
+            label: Statut national
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        alsace:
+            field_name: syn.alsace
+            label: Alsace
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        aquitaine:
+            field_name: syn.aquitaine
+            label: Aquitaine
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        auvergne:
+            field_name: syn.auvergne
+            label: Auvergne
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        basse_normandie:
+            field_name: syn.basse_normandie
+            label: Basse-Normandie
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        bourgogne:
+            field_name: syn.bourgogne
+            label: Bourgogne
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        bretagne:
+            field_name: syn.bretagne
+            label: Bretagne
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        centre:
+            field_name: syn.centre
+            label: Centre
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        champagne_ardenne:
+            field_name: syn.champagne_ardenne
+            label: Champagne-Ardenne
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        corse:
+            field_name: syn.corse
+            label: Corse
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        franche_comte:
+            field_name: syn.franche_comte
+            label: Franche-Comté
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        haute_normandie:
+            field_name: syn.haute_normandie
+            label: Haute-Normandie
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        ile_de_france:
+            field_name: syn.ile_de_france
+            label: Île-de-France
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        languedoc_roussillon:
+            field_name: syn.languedoc_roussillon
+            label: Languedoc-Roussillon
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        limousin:
+            field_name: syn.limousin
+            label: Limousin
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        lorraine:
+            field_name: syn.lorraine
+            label: Lorraine
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        midi_pyrenees:
+            field_name: syn.midi_pyrenees
+            label: Midi-Pyrénées
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        nord_pas_de_calais:
+            field_name: syn.nord_pas_de_calais
+            label: Nord-Pas-de-Calais
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        pays_de_la_loire:
+            field_name: syn.pays_de_la_loire
+            label: Pays de la Loire
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        picardie:
+            field_name: syn.picardie
+            label: Picardie
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        poitou_charentes:
+            field_name: syn.poitou_charentes
+            label: Poitou-Charentes
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        paca:
+            field_name: syn.paca
+            label: PACA
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        rhone_alpes:
+            field_name: syn.rhone_alpes
+            label: Rhône-Alpes
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+
+

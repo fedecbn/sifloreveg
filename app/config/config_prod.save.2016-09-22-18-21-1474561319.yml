@@ -1,0 +1,34 @@
+imports:
+    - { resource: config.yml }
+
+#framework:
+#    validation:
+#        cache: apc
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver: apc
+#        result_cache_driver: apc
+#        query_cache_driver: apc
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: debug
+doctrine:
+    dbal:
+        connections:
+            siflore:
+                driver:   pdo_pgsql
+                host:     94.23.218.10
+                port:     5432
+                dbname:   siflore_data_temp
+                user:     lecteur_masao
+                password: masao_2013
+                charset:  UTF8

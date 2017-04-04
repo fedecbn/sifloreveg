@@ -1,0 +1,172 @@
+<!--Sélection du rendu-->
+<div class="panel-group" id="rightCollapsible">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapse0">
+                    Sélection du rendu<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse0" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <form role="form" id="RenduSelectionForm" action='JavaScript:ChangeRendu()'>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="RenduOptions" id="RenduOptions1" value="1" autocomplete="off">
+                            Localisation (populations spontanées et cultivées)
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="RenduOptions" id="RenduOptions2" autocomplete="off" value="2">
+                            Nombre d'observations
+                        </label>
+                    </div>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="RenduOptions" id="RenduOptions3" value="3" autocomplete="off">
+                            Rang taxonomique
+                        </label>
+                    </div>
+                {% endif %}
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="RenduOptions" id="RenduOp$
+                            Localisation (populations spontanées et cultivées)
+                        </label>
+                        uOptions4" value="4" autocomplete="off" checked>
+                            Dates d'observation
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Modifier le rendu</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default fondCartesMenu MetropoleLayers hidden">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapse1">
+                    Fonds de cartes <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+            {% for layer in layers if layer.treenodechild =='Fonds de cartes' and layer.zone == 'metropole'  %}
+                    <div class="radio">
+                        <label>
+                            <input type="radio" class="fondCartesOptions" name="fondCartesOptions" url="{{ layer.url }}" layer="{{ layer.layers }}" autocomplete="off">
+                            {{ layer.label }}
+                        </label>
+                    </div>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!--Map Layers METRO-->
+
+        <div class="panel panel-default MetropoleLayers hidden">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapse2">
+                        INPN<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                {% for layer in layers if layer.treenodechild =='INPN' and layer.zone == 'metropole'  %}
+                        <div class="checkbox"><label><input type="checkbox" class="overlayerSelector" url="{{layer.url}}" layer="{{ layer.layers }}" autocomplete="off">{{ layer.label }}</label></div>
+                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default MetropoleLayers hidden">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapse3">
+                                    Limites administratives et CBN<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {% for layer in layers if layer.treenodechild =='Limites administratives et CBN' and layer.zone == 'metropole'  %}
+                                <div class="checkbox"><label><input type="checkbox" class="overlayerSelector" url="{{ layer.url }}" layer="{{ layer.layers }}" autocomplete="off">{{ layer.label }}</label></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default MetropoleLayers hidden">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapse4">
+                                    Cours d'eau<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {% for layer in layers if layer.treenodechild =="Cours d'eau" and layer.zone == 'metropole'  %}
+                                <div class="checkbox"><label><input type="checkbox" class="overlayerSelector" url="{{ layer.url }}" layer="{{ layer.layers }}" autocomplete="off">{{ layer.label }}</label></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!--Map Layers REUNION-->
+                    <div class="panel panel-default fondCartesMenu ReunionLayers hidden">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapseReun1">
+                                    Fonds de cartes <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseReun1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {% for layer in layers if layer.treenodechild == "Fonds de cartes" and layer.zone == 'reunion'  %}
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" class="fondCartesOptions" name="fondCartesOptionsReun" url="{{ layer.url }}" layer="{{ layer.layers }}" autocomplete="off">
+                                        {{ layer.label }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default ReunionLayers hidden">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#rightCollapsible" href="#collapseReun2">
+                                    INPN<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseReun2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {% for layer in layers if layer.treenodechild =="INPN" and layer.zone == 'reunion'  %}
+                                <div class="checkbox"><label><input type="checkbox" class="overlayerSelector" url="{{layer.url}}" layer="{{layer.layers}}" autocomplete="off">{{ layer.label }}</label></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Légende</h3>
+                    </div>
+                    <div class="panel-body" id="legend">
+                        <div id='LegendSyntheseDesc'></div>
+                        <div id='legendRendu'></div>
+                        <div id='legendFondsCarte'></div>
+                    </div>
+                </div>

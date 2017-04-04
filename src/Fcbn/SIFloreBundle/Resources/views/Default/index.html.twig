@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+
+{% block title %}SI Observation Flore{% endblock %}
+
+
+{% block stylesheets %}{{ parent() }}
+{% stylesheets '@SIFloreBundle/si-flore/Style.css' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('lib/GeoExt/resources/css/geoext-all.css')}}" />
+    <link rel="stylesheet" href="{{ asset('lib/ext-3.4.0/resources/css/ext-all.css')}}" />
+    <link rel="stylesheet" href="{{ asset('lib/ext-3.4.0/resources/css/ButtonColumn.css')}}" />
+    <link rel="stylesheet" href="{{ asset('lib/ext-3.4.0/resources/css/xtheme-gray.css')}}" />
+    <style>
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+    </style>
+{% endblock %}
+
+
+{% block javascripts %}{{ parent() }}
+    <script src="{{ asset('lib/ext-3.4.0/adapter/ext/ext-base.js')}}"></script>
+    <script src="{{ asset('lib/ext-3.4.0/ext-all.js')}}"></script>
+    <script src="{{ asset('lib/ext-3.4.0/src/locale/ext-lang-fr.js')}}"></script>
+    <script src="{{ asset('lib/ext-3.4.0/ButtonColumn.js')}}"></script>
+    <script src="{{ asset('lib/OpenLayers/lib/OpenLayers.js')}}"></script>
+    <script src="{{ asset('lib/GeoExt/script/GeoExt.js')}}"></script>
+    <script src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>
+{% javascripts '@SIFloreBundle/si-flore/si-flore.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+{% javascripts '@SIFloreBundle/si-flore/comment.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block bodyatribs%}{% endblock %}
+{% block body %}
+    <input type="hidden" id="query_route" value="{{path('siflore_query', {'domain': null})}}" />
+    <div id="SIFloreWrap" style="margin-top:-18px;height:90%;width:100%; overflow:hidden" ></div> 
+<!--<div id="map"></div>-->
+{% endblock %}
+

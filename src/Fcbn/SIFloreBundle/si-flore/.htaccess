@@ -1,0 +1,5 @@
+AuthUserFile /home/fcbn/htdocs/si-flore/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Visiteur, vous pénétrez dans une section réservée aux membres, veuillez vous identifier"
+AuthType Basic
+Require valid-user

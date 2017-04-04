@@ -1,0 +1,15 @@
+new_si_veg_homepage:
+    pattern:  /
+    defaults: { _controller: FcbnNewSIVegBundle:Default:index }
+
+new_siveg_photolinks:
+    pattern: /query/photolinks/{cd_ref}
+    defaults: { _controller: FcbnNewSIVegBundle:Photo:links }
+new_siveg_photo:
+    pattern: /query/photo/{image_id}
+    defaults: { _controller: FcbnNewSIVegBundle:Photo:photo }
+
+new_siveg_query:
+    pattern: /query/{queryname}
+    defaults: { _controller: FcbnNewSIVegBundle:Query:index, queryname: '' }
+

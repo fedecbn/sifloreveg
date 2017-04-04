@@ -1,0 +1,125 @@
+parameters:
+    taxons_veg_grid:
+        cd_ref:
+            field_name: syn.cd_ref
+            label: Code TaxRef
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        cd_ref_reun:
+            field_name: ind.cd_ref
+            label: Code TaxRef
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+        nom_complet:
+            field_name: syn.nom_complet
+            label: Nom du taxon
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        nom_complet_reun:
+            field_name: ind.nom_complet
+            label: Nom du taxon
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+        nb_obs:
+            label: Nb observations
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        nb_obs_reun:
+            field_name: count(*)               
+            label: Nb observations
+            maille_display: true
+            commune_display: true
+            reunion_display: true                 
+        date_premiere_obs:
+            label: Date première obs.
+            maille_display: true
+            commune_display: true
+            metro_display: true
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_premiere_obs_year:
+            field_name: to_char(date_premiere_obs,'YYYY')
+            label: Date première obs.
+            maille_display: true
+            commune_display: true
+            metro_display: true
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        date_premiere_obs_reun:
+            field_name: min(date_debut_obs)
+            label: Date première obs.
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_premiere_obs_reun_year:
+            field_name: to_char(min(date_debut_obs),'YYYY')
+            label: Date première obs.
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        date_derniere_obs:
+            label: Date dernière obs.
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_derniere_obs:
+            field_name: to_char(date_derniere_obs,'YYYY')
+            label: Date dernière obs.
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        date_derniere_obs_reun:
+            field_name: max(date_fin_obs)
+            label: Date première obs.
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_derniere_obs_reun:
+            field_name: to_char(max(date_fin_obs),'YYYY')
+            label: Date première obs.
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        nb_obs_2001_2013:
+            label: Nb obs. date≥2000
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        nb_obs_2001_2013_reun:
+            field_name: "count(CASE WHEN date_fin_obs >= '1500-01-01'::date AND date_fin_obs < '1980-01-01'::date THEN 1 ELSE NULL::integer END) AS nb_obs_1500_1980, count(CASE WHEN date_fin_obs >= '1980-01-01'::date AND date_fin_obs < '2000-01-01'::date THEN 1 ELSE NULL::integer END) AS nb_obs_1981_2000, count(CASE WHEN date_fin_obs >= '2000-01-01'::date THEN 1 ELSE NULL::integer END)"
+            label: Nb obs. date≥2000
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+        nb_obs_averee:
+            label: Nb obs. avérée
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        nb_obs_averee_reun:
+            field_name: count(*)
+            label: Nb obs. avérée
+            maille_display: true
+            commune_display: true
+            reunion_display: true  
+        nb_obs_interpretee:
+            label: Nb obs. interprétée
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+        nb_obs_interpretee_reun:
+            field_name: to_char(0,'9')
+            label: Nb obs. interprétée
+            maille_display: true
+            commune_display: true
+            reunion_display: true 
+

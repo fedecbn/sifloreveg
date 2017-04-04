@@ -1,0 +1,89 @@
+<div class="col-lg-3" id="left-block">
+    <!--Sélection du taxon et options de synthèse-->
+
+    <ul class="nav nav-pills" id="RegionSelectionList">
+        <li><a href="metro" class="toggle_metro">Métropole</a></li>
+        <li><a href="reun" class="toggle_reun">Île de La Réunion</a></li>
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Sélection du taxon<br /><small>et options de synthèse</small></h3>
+        </div>
+
+        <div class="panel-body">
+            <form role="form" id="TaxonSelectionForm" action="JavaScript:SendTaxonSelectionForm($('#TaxonSelect option:selected'))">
+                <select id="TaxonsGroup" class="LeftSelectInput" autocomplete="off">
+                    <option value=''>Tous les groupes</option>
+                    <option value="tracheo">Trachéophytes</option>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <option value="bryo_liste">Bryophytes DHFF / conv. Berne</option>
+                        <option value="bryo_pas_liste">Bryophytes hors DHFF / conv. Berne</option>
+                    {% else %}
+                        <option value="bryo">Bryophytes</option>
+                    {% endif %}
+
+                </select>
+                <select id="TaxonsRangs" class="LeftSelectInput" autocomplete="off">
+                    <option value=''>Tous les rangs</option>
+                    <option value="GN">Genre</option>
+                    <option value="ES">Espèce</option>
+                    <option value="SSES">Sous-espèce</option>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <option value="VAR">Variété</option>
+                    <option value="FO">Forme</option>
+                    <option value="CAR">Cultivar</option>
+                    {%endif%}
+                </select>
+                <input id="TaxonSelect" type="hidden" data-placeholder="Choisir un taxon" class="LeftSelectInput"/>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <h4>Taxon Options</h4>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="TaxonOptions" id="TaxonOptions1" value="1" autocomplete="off" checked >
+                            Taxon choisi et taxons inférieurs
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="TaxonOptions" id="TaxonOptions2" value="2" autocomplete="off">
+                            Uniquement le nom choisi
+                        </label>
+                    </div>
+                {% endif %}
+                <h4>Synthese Options</h4>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="SyntheseOptions" id="SyntheseOptions1" value="1" autocomplete="off" checked>
+                        Synthèse maille 10km
+                    </label>
+                </div>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="SyntheseOptions" id="SyntheseOptions2" value="2" autocomplete="off">
+                            <span id="alternateMaille">Synthèse maille 5km</span>
+                        </label>
+                    </div>
+                {% endif %}
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="SyntheseOptions" id="SyntheseOptions3" value="3" autocomplete="off">
+                        Synthèse communale
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" autocomplete="off">Envoyer</button>
+            </form>
+        </div>
+    </div>
+    <hr/>
+    <div class="panel panel-default hidden" id="photo">
+        <div class="panel-heading">
+            <h3 class="panel-title">Image</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+</div>
+</div>
+

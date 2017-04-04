@@ -1,0 +1,8 @@
+fcbn_dashboard_homepage:
+    path: /
+    defaults: { _controller: FcbnDashboardBundle:Default:dashboard }
+
+fcbn_dashboard_sendemail:
+    path: /sendemail
+    defaults: { _controller: FcbnDashboardBundle:Default:sendEmail }
+

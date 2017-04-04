@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Connexion{% endblock %}
+{% block stylesheets %}{{ parent() }}
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/fos.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+{% block javascripts %}{{ parent() }}
+<script>
+    $('#username').focus();
+</script>
+{% endblock %}
+
+{% block body %}
+    <div id="fos_cont">
+        <form action="{{ path("sonata_user_admin_security_check") }}" method="post" class="form-horizontal">
+
+    {% if error %}
+            <div class="alert alert-danger">{{ error|trans({}, 'SonataUserBundle') }}</div>
+    {% endif %}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <input type="hidden" name="referer" value="{{ referer }}" />
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <div class="col-sm-8">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                <div class="col-sm-8">
+                    <input type="password" id="password" name="_password" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <a href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</a>
+                </div>
+            </div>
+{#
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+#}
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock body %}

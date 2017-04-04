@@ -1,0 +1,64 @@
+<form class="form-horizontal" id="commentform" role="form" method="post" action="query/commentaires">
+    <div class="form-group">
+        <label for="inputNomTaxon" class="col-sm-4 control-label">Nom taxon:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control"  name="inputNomTaxon" id="inputNomTaxon" placeholder="Nom Taxon" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputCodeObject" class="col-sm-4 control-label">Code maille / Code insee:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control"  name="inputCodeObject" id="inputCodeObject" placeholder="Code maille / Code insee" disabled="disabled">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputCodeObs" class="col-sm-4 control-label">Code de l'observation:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control"  name="inputCodeObs" id="inputCodeObs" placeholder="Code de l'observation" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="selecType" class="col-sm-4 control-label">Type de commentaire:</label>
+        <div class="col-sm-8">
+            <select  name="selecType" id="selecType" class="form-control">
+                <option value="Remarque">Remarque</option>
+                <option value="Erreur">Erreur</option>
+                <option value="Test">Test</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="selecAction" class="col-sm-4 control-label">Action demandée:</label>
+        <div class="col-sm-8">
+            <select  name="selecAction" id="selecAction" class="form-control">
+                <option value="Modification">Modification</option>
+                <option value="Suppression">Suppression</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="selecPriorite" class="col-sm-4 control-label">Priorité:</label>
+        <div class="col-sm-8">
+            <select  name="selecPriorite" id="selecPriorite" class="form-control">
+                <option value="Basse">Basse</option>
+                <option value="Moyenne">Moyenne</option>
+                <option value="Haute">Haute</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="txtareaCommentaire" class="col-sm-4 control-label">Commentaire:</label>
+
+        <div class="col-sm-8">
+            <textarea  name="txtareaCommentaire" class="form-control" rows="3" id="txtareaCommentaire"></textarea>
+        </div>
+    </div>
+    <input type="hidden"  name="inputCodRef" id="inputCodRef">
+    <div class="pull-right">
+        <button type="submit" id="submitNewComment" class="btn btn-default">Envoyer</button>
+    </div>
+</form>

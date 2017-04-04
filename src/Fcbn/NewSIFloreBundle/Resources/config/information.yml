@@ -1,0 +1,21 @@
+parameters:
+    information_grid:
+        cd_ref:
+            field_name: syn.cd_ref
+            label: Code TaxRef
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        nom_complet:
+            field_name: syn.nom_complet
+            label: Nom du taxon
+            maille_display: true
+            commune_display: true
+            metro_display: true 
+        url:
+            field_name: syn.url
+            label: Liens externes
+            maille_display: true
+            commune_display: true
+            metro_display: true  
+

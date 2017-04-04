@@ -1,0 +1,24 @@
+imports:
+    - { resource: observations_veg.yml }
+    - { resource: information_veg.yml }
+    - { resource: mailles_veg.yml }
+    - { resource: taxons_veg.yml }
+parameters:
+    newsivegbundle.query.class: Fcbn\NewSIVegBundle\Services\QueryService
+    newsivegbundle.photo.class: Fcbn\NewSIVegBundle\Services\PhotoService
+    newsivegbundle.grid.class: Fcbn\NewSIVegBundle\Services\GridService
+
+services:
+    new_si_veg.query:
+        class: %newsivegbundle.query.class%
+        arguments: [@doctrine.dbal.siveg_connection, @security.context]
+    new_si_veg.photo:
+        class: %newsivegbundle.photo.class%
+        arguments: [@doctrine.dbal.photo_connection]
+    new_si_veg.grid:
+        class: %newsivegbundle.grid.class%
+        arguments:
+            - @doctrine.dbal.siveg_connection
+            - @security.context
+            - {mailles_veg_grid: %mailles_veg_grid%,information_veg_grid: %information_veg_grid%, taxons_veg_grid: %taxons_veg_grid%, observations_veg_grid: %observations_veg_grid%}
+

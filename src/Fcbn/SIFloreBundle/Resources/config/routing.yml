@@ -1,0 +1,8 @@
+si_flore_homepage:
+    pattern:  /
+    defaults: { _controller: SIFloreBundle:Default:index }
+siflore_query:
+    pattern: /query/{queryname}
+    defaults: { _controller:  SIFloreBundle:Query:index, queryname:'' }
+
+

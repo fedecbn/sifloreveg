@@ -1,0 +1,164 @@
+{# empty Twig template #}
+{% extends '::base.html.twig' %}
+
+
+{% block title %}SI Observation Végétations{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.min.css" />
+{#<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" />#}
+    {% stylesheets 'bundles/fcbnnewsiflore/css/*' filter='cssrewrite' %}
+<link rel="stylesheet" href="{{ asset_url }}" />
+<!--[if lt IE 9]><link rel="stylesheet" href="{{ asset('css/ltie9.css') }}" /><![endif]-->
+    {% endstylesheets %}
+{% endblock %}
+
+
+{% block extrahead %}
+{% javascripts 'bundles/fcbnnewsiflore/js/analytics.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if taxon is defined %}
+    <script>
+        var BaseUrl = "{{ path('new_si_veg_homepage', {'domain': null}) }}";
+        var PageStatusTaxon = "{{ taxon }}";
+        var PageStatusRegion = "{{ region }}";
+        var PageStatusTaxonOption = "{{ taxonoption }}";
+        var PageStatusSyntheseOption = "{{ syntheseoption }}";
+        var ieDis9 = false;
+        var ieDis8 = false;
+    </script>
+    <!--[if lte IE 9]><script>ieDis9 = true</script><![endif]-->
+    <!--[if lte IE 8]><script>ieDis8 = true</script><![endif]-->
+    {% endif %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/OpenLayers.light.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2_locale_fr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/lib/OpenLayers/Control/ScaleLine.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/lib/OpenLayers/Strategy/Cluster.min.js"></script>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% endif %}
+    {% javascripts 'bundles/fcbnnewsiflore/js/siflorelayersrules.js'
+                   'bundles/fcbnnewsiflore/js/newsiflore.js'
+                   'bundles/fcbnnewsiflore/js/sifloremaps.js'
+                   'bundles/fcbnnewsiflore/js/sifloregrids.js'
+                   'bundles/fcbnnewsiflore/js/siflorereleve.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% javascripts 'bundles/fcbnnewsiflore/js/siflorecom.js' 
+                       'bundles/fcbnnewsiflore/js/siflorerangtax.js' 
+        %}
+    <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endif %}
+    {% endblock %}
+
+
+{% block bodyatribs%}{% endblock %}
+{% block body %}
+    <div style="padding: 0 15px;">
+        <div class="row">
+            {{ include('FcbnNewSIVegBundle:Default:leftpanel.html.twig')}}
+                <div class="col-lg-6" id="middle-block">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="MainTabs">
+                        <li  class="active"><a href="#map" data-toggle="tab">Carte</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li><a href="#readcomments" data-toggle="tab">Commentaires</a></li>
+                            <li><a href="#newcomment" data-toggle="tab">Nouveau commentaire</a></li>
+                    {%endif%}
+                                <li><a class="hidden" href="#Observations" data-toggle="tab">Observations</a></li>
+                                <li><a href="#use" data-toggle="tab">Notices</a></li>
+                                <li><a href="#readreleve" data-toggle="tab">Relevé</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="map"></div>
+                                        <div class="tab-pane table-responsive" id="readreleve"></div>
+                                        <div class="tab-pane table-responsive" id="readcomments"></div>
+                                        <div class="tab-pane" id="newcomment">
+                                            {{ include('FcbnNewSIVegBundle:Default:newcommentform.html.twig')}}
+                                            </div>
+                                            <div class="tab-pane" id="Observations"></div>
+                                            <div class="tab-pane" id="use">
+                                              {{ include('FcbnNewSIVegBundle:Default:utilisation.html.twig')}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3" id="right-block">
+                                    {{ include('FcbnNewSIVegBundle:Default:rightpanel.html.twig')}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12" id="middle-block">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs">
+                                            <li  class="active"><a href="#SyntheseGridCont1" data-toggle="tab">Synthèse par maille</a></li>
+                                            <li><a href="#SyntheseGridCont2" data-toggle="tab">Synthèse par syntaxon</a></li>
+                                        </ul>
+
+                                        <!-- Tab panes -->
+                                        <div id="bottomTabs" class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active table-responsive SyntheseGridCont" id="SyntheseGridCont1"></div>
+                                                    <div class="tab-pane table-responsive SyntheseGridCont" id="SyntheseGridCont2"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal For the Observations -->
+                            <div class="modal fade" id="ObservationsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Observation <small id="observation_title_id"></small></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                            <button type="button" class="btn btn-primary" id="readReleveBtn">Voir le relevé associé</button>
+                                            <button type="button" class="btn btn-primary" id="readCommentBtn">Voir les commentaires</button>
+                                            <button type="button" class="btn btn-primary" id="newCommentBtn">Commenter cette observation</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                            <!-- Modal For Succesful/wrong comments -->
+                            <div class="modal fade" id="NewCommentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <span id="SuccesCommMessage" class="CommMessage">Votre commentaire à bien été pris en compte.</span>
+                                            <span id="ErrCommMessage" class="CommMessage">Veuillez remplir tous les champs.</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                            <!-- Modal For Loading Message -->
+                            <div id="LoadingModal"><!-- Place at bottom of page --></div>
+
+{% endblock %}
+

@@ -1,0 +1,40 @@
+#use ol {
+    padding-left: 10px;
+}
+#use ol.mainol {
+    padding-left: 20px;
+}
+
+#use ol.mainol > li {
+    counter-increment: level0;
+}
+
+#use ol.mainol > li > ol {
+    counter-reset: level1;
+    list-style-type: none;
+}
+#use ol.mainol > li > ol > li {
+    counter-increment: level1;
+}
+#use ol.mainol > li > ol > li:before {
+    content: counter(level0) "." counter(level1) " ";
+}
+
+#use ol.mainol > li > ol > li > ol {
+    counter-reset: level2;
+    list-style-type: none;
+}
+#use ol.mainol > li > ol > li > ol > li {
+    counter-increment: level2;
+}
+#use ol.mainol > li > ol > li > ol > li:before {
+    content: counter(level0) "." counter(level1) "." counter(level2) " ";
+}
+
+#use h3,
+#use h4,
+#use h5 {
+    display: inline-block;
+}
+
+

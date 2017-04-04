@@ -1,0 +1,17 @@
+new_si_flore_homepage:
+    pattern:  /
+    defaults: { _controller: FcbnNewSIFloreBundle:Default:index }
+
+new_siflore_photolinks:
+    pattern: /query/photolinks/{cd_ref}
+    defaults: { _controller: FcbnNewSIFloreBundle:Photo:links }
+
+new_siflore_photo:
+    pattern: /query/photo/{image_id}
+    defaults: { _controller: FcbnNewSIFloreBundle:Photo:photo }
+
+new_siflore_query:
+    pattern: /query/{queryname}
+    defaults: { _controller: FcbnNewSIFloreBundle:Query:index, queryname: '' }
+
+

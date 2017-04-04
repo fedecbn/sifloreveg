@@ -1,0 +1,25 @@
+imports:
+    - { resource: observations.yml }
+    - { resource: information_taxa.yml }
+    - { resource: information.yml }
+    - { resource: mailles.yml }
+    - { resource: taxons.yml }
+parameters:
+    newsiflorebundle.query.class: Fcbn\NewSIFloreBundle\Services\QueryService
+    newsiflorebundle.photo.class: Fcbn\NewSIFloreBundle\Services\PhotoService
+    newsiflorebundle.grid.class: Fcbn\NewSIFloreBundle\Services\GridService
+
+services:
+    new_si_flore.query:
+        class: %newsiflorebundle.query.class%
+        arguments: [@doctrine.dbal.siflore_connection, @security.context]
+    new_si_flore.photo:
+        class: %newsiflorebundle.photo.class%
+        arguments: [@doctrine.dbal.photo_connection]
+    new_si_flore.grid:
+        class: %newsiflorebundle.grid.class%
+        arguments:
+            - @doctrine.dbal.siflore_connection
+            - @security.context
+            - {mailles_grid: %mailles_grid%, taxons_grid: %taxons_grid%,information_grid: %information_grid%,information_taxa_grid: %information_taxa_grid%, observations_grid: %observations_grid%}
+

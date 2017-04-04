@@ -1,0 +1,16 @@
+parameters:
+    application_sonata_user.component.authentication.handler.login_success_handler.class:  Application\Sonata\UserBundle\Component\Authentication\Handler\LoginSuccessHandler
+    application_sonata_user.component.authentication.handler.logout_success_handler.class: Application\Sonata\UserBundle\Component\Authentication\Handler\LogoutSuccessHandler
+    
+services:
+    application_sonata_user.component.authentication.handler.login_success_handler:
+        class:  %application_sonata_user.component.authentication.handler.login_success_handler.class%
+        arguments:  ['@router']
+        tags:
+            - { name: 'monolog.logger', channel: 'security' } 
+
+    application_sonata_user.component.authentication.handler.logout_success_handler:
+        class:  %application_sonata_user.component.authentication.handler.logout_success_handler.class%
+        arguments:  ['@router']
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

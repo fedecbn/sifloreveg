@@ -1,0 +1,58 @@
+imports:
+    - { resource: config.yml }
+
+#doctrine:
+#    dbal:
+#        connections:
+#            siflore:
+#                driver:   pdo_pgsql
+#                host:     localhost
+#                port:     5432
+#                dbname:   si_flore
+#                user:     lecteur_masao
+#                password: masao_2013
+#                charset:  UTF8
+doctrine:
+    dbal:
+        connections:
+            siflore:
+                driver:   pdo_pgsql
+                host:     94.23.218.10
+                port:     5432
+                dbname:   siflore_data_temp
+                user:     lecteur_masao
+                password: masao_2013
+                charset:  UTF8
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: debug
+        firephp:
+            type:  firephp
+            level: info
+        chromephp:
+            type:  chromephp
+            level: info
+        doctrine:
+            action_level: debug
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%_doctrine.log
+            channels: doctrine
+
+assetic:
+    use_controller: true
+
+#swiftmailer:
+#    delivery_address: me@example.com

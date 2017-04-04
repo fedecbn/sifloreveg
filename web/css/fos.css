@@ -1,0 +1,12 @@
+#fos_cont {
+    width: 600px;
+    padding: 10px;
+    margin: 100px auto 0;
+}
+
+@media (max-width: 600px) {
+#fos_cont {
+    width: auto;
+}
+}
+

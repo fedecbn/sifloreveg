@@ -1,0 +1,277 @@
+parameters:
+    mailles_veg_grid:
+        cd_sig:
+            label: Code maille
+            maille_display: true
+            metro_display: true 
+            body_classes: key 
+            inferieurs_display: true
+            not_inferieurs_display: true
+        reun_cd_sig:
+            field_name: cd_sig
+            label: Code maille
+            maille_display: true
+            reunion_display: true 
+            body_classes: key 
+            inferieurs_display: true
+        ss_inf_reun_cd_sig:
+            field_name: mai.cd_sig
+            label: Code maille
+            maille_display: true
+            reunion_display: true 
+            body_classes: key 
+            not_utm1_ss_inf: true
+            not_inferieurs_display: true
+        utm1_cd_sig:
+            field_name: mai.nom_maille
+            label: Code maille
+            utm1_ss_inf: true
+            body_classes: key 
+        insee_comm:
+            label: Insee
+            metro_display: true 
+            commune_display: true
+            body_classes: key 
+            inferieurs_display: true
+            not_inferieurs_display: true
+        insee_comm_reun:
+            field_name: code_insee
+            label: Insee
+            commune_display: true
+            reunion_display: true 
+            body_classes: key 
+            inferieurs_display: true
+        ss_inf_insee_comm_reun:
+            field_name: mai.code_insee
+            label: Insee
+            commune_display: true
+            reunion_display: true 
+            body_classes: key 
+            not_inferieurs_display: true
+        nom_comm:
+            field_name: max(nom_comm)
+            label: Commune
+            metro_display: true 
+            commune_display: true
+            inferieurs_display: true
+            not_inferieurs_display: true
+        nom_comm_reun:
+            field_name: nom
+            label: Commune
+            reunion_display: true 
+            commune_display: true
+            inferieurs_display: true
+            not_inferieurs_display: true
+        cd_ref:
+            field_name: string_agg(distinct cd_ref::text, '<br/>')
+            label: Code TaxRef
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_inferieurs_display: true
+        noms_taxon:
+            field_name: string_agg(distinct nom_complet, '<br/>')
+            label: Nom(s) du(des) syntaxon(s)
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_inferieurs_display: true      
+        nb_obs:
+            field_name: sum(nb_obs)
+            label: Nb observations
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            default_order_by: true
+        ss_inf_nb_obs:
+            field_name: count(*)
+            label: Nb observations
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+            default_order_by: true
+        date_premiere_obs:
+            field_name: min(date_premiere_obs)
+            label: Date première obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_premiere_obs_year:
+            field_name: to_char(min(date_premiere_obs),'YYYY')
+            label: Date première obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        ss_inf_date_premiere_obs:
+            field_name: min(date_debut_obs)
+            label: Date première obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+            roles: [IS_AUTHENTICATED_FULLY]
+        ss_inf_date_premiere_obs_year:
+            field_name: to_char(min(date_debut_obs),'YYYY')
+            label: Date première obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        date_derniere_obs:
+            field_name: max(date_derniere_obs)
+            label: Date dernière obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            roles: [IS_AUTHENTICATED_FULLY]
+        date_derniere_obs_year:
+            field_name: to_char(max(date_derniere_obs),'YYYY')
+            label: Date dernière obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        ss_inf_date_derniere_obs:
+            field_name: max(date_fin_obs)
+            label: Date dernière obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+            roles: [IS_AUTHENTICATED_FULLY]
+        ss_inf_date_derniere_obs_year:
+            field_name: to_char(max(date_fin_obs),'YYYY')
+            label: Date dernière obs.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+            not_roles: [IS_AUTHENTICATED_FULLY]
+        nb_tax_n1:
+            field_name: count(case when cd_ref= :cd_ref THEN 1 ELSE NULL::integer END)
+            label: Nb syntaxon rang choisi
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_inferieurs_display: true
+        nb_tax_n2:
+            field_name: count(case when cd_ref!= :cd_ref THEN 1 ELSE NULL::integer END)
+            label: Nb syntaxon rangs inf.
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_inferieurs_display: true
+        nb_obs_2001_2013: 
+            field_name: sum(nb_obs_2001_2013)
+            label: Nb obs. date≥2000
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+        ss_inf_nb_obs_2001_2013: 
+            field_name: count(CASE WHEN date_fin_obs >= '2000-01-01'::date THEN 1 ELSE NULL::integer END) 
+            label: Nb obs. date≥2000
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+        nb_obs_averee:
+            field_name: sum(nb_obs_averee)
+            label: Nb obs. loc. avérée
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true
+            not_utm1_ss_inf: true
+            not_utm10_ss_inf: true
+        ss_inf_nb_obs_averee:
+            field_name: count(CASE WHEN libelle_type_localisation = 'Averée' THEN 1 ELSE NULL::integer END) 
+            label: Nb obs. loc. avérée
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            not_inferieurs_display: true
+            not_utm1_ss_inf: true
+            not_utm10_ss_inf: true
+        ss_inf_reun_nb_obs_averee:
+            field_name: count(CASE WHEN lien.type_localisation_commune = 'A'::bpchar THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. avérée
+            reunion_display: true
+            commune_display: true
+            maille_display: true
+            not_inferieurs_display: true  
+            not_utm1_ss_inf: true
+            not_utm10_ss_inf: true
+        utm10_ss_inf_reun_nb_obs_averee:
+            field_name: count(CASE WHEN lien.type_localisation_maille_utm10 = 'A'::bpchar THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. avérée
+            utm10_ss_inf: true
+        utm1_ss_inf_reun_nb_obs_averee:
+            field_name: count(CASE WHEN lien.type_localisation_maille_utm1= 'A'::bpchar THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. avérée  
+            utm1_ss_inf: true         
+        nb_obs_interpretee: 
+            field_name: sum(nb_obs_interpretee)
+            label: Nb obs. loc. interprétée
+            reunion_display: true 
+            metro_display: true 
+            maille_display: true
+            commune_display: true
+            inferieurs_display: true            
+            not_utm1_ss_inf: true
+            not_utm10_ss_inf: true
+        ss_inf_nb_obs_interpretee: 
+            field_name: count(CASE WHEN libelle_type_localisation = 'Interpretée' THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. interprétée
+            metro_display: true 
+            maille_display: true
+            not_inferieurs_display: true
+            not_utm1_ss_inf: true
+            not_utm10_ss_inf: true
+        ss_inf_reun_nb_obs_interpretee: 
+            field_name: count(CASE WHEN lien.type_localisation_commune = 'I'::bpchar THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. interprétée
+            reunion_display: true
+            maille_display: true
+            commune_display: true
+            not_inferieurs_display: true
+            not_utm1_ss_inf: true
+            not_utm10_ss_inf: true
+        utm10_ss_inf_reun_nb_obs_interpretee: 
+            field_name: count(CASE WHEN lien.type_localisation_maille_utm10 = 'I'::bpchar THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. interprétée
+            utm10_ss_inf: true
+        utm1_ss_inf_reun_nb_obs_interpretee: 
+            field_name: count(CASE WHEN lien.type_localisation_maille_utm1 = 'I'::bpchar THEN 1 ELSE NULL::integer END)
+            label: Nb obs. loc. interprétée
+            utm1_ss_inf: true

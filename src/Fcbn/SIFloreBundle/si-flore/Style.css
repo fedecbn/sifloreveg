@@ -1,0 +1,20 @@
+#map {
+    width: 800px;
+    height: 620px;
+    border: 1px solid #000;
+}
+
+/* Bootstrap overrides ********************************************************/
+
+*, *:before, *:after {
+	-webkit-box-sizing: content-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: content-box;    /* Firefox, other Gecko */
+	box-sizing: content-box;         /* Opera/IE 8+ */
+}
+
+label {
+    display: inline;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
